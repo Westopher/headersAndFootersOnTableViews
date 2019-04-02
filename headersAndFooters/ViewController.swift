@@ -9,7 +9,8 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    let headerText = ["Header 1", "Header 2", "Header 3", "Header 4", "Header 5", "Header 6"]
+    
     @IBOutlet weak var headerLabel: UILabel!
     
     override func viewDidLoad() {
@@ -28,22 +29,27 @@ extension ViewController: UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 10
+        return headerText.count
     }
     
 }
 
 extension ViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return headerText[section]
+    }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
     }
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = UITextView()
-        header.backgroundColor = .gray
-        header.textColor = .white
-        header.text = "Header Section"
-        return header
-    }
+    
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let header = UITextView()
+//        header.backgroundColor = .gray
+//        header.textColor = .white
+//        header.text = "Header Section"
+//        return header
+//    }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 30
