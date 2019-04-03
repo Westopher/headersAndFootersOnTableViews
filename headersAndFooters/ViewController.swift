@@ -29,14 +29,19 @@ extension ViewController: UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return headerText.count
+        return aToZ.count
     }
     
 }
 
 extension ViewController: UITableViewDelegate {
+    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return aToZ
+    }
+    
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return headerText[section]
+        return aToZ[section]
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
